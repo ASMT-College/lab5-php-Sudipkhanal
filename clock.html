@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Clock</title>
+    <style>
+      body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        margin: 0;
+        background-color: #0d0e0f;
+        color: rgb(217, 15, 15);
+      }
+
+      @font-face {
+          format("woff");
+        font-weight: normal;
+        font-style: normal;
+      }
+
+      .clock {
+        background-color: #db1414;
+        border-radius: 30px;
+        padding: 40px 40px;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+        text-align: top;
+      }
+
+      #time {
+        font-size: 80px;
+        color: rgb(0, 255, 98);
+        text-shadow: 0 0 5px rgba(23, 227, 23, 0.7);
+      }
+    </style>
+  </head>
+  <body>
+    <div class="clock">
+      <div id="time"></div>
+    </div>
+    <script>
+      function updateTime() {
+        const timeElement = document.getElementById("time");
+        const now = new Date();
+
+        const hours = String(now.getHours()).padStart(2, "0");
+        const minutes = String(now.getMinutes()).padStart(2, "0");
+        const seconds = String(now.getSeconds()).padStart(2, "0");
+
+        timeElement.textContent = `${hours}:${minutes}:${seconds}`;
+      }
+
+      setInterval(updateTime, 1000);
+      updateTime(); 
+    </script>
+  </body>
+</html>
